@@ -1,0 +1,14 @@
+#!/bin/bash
+
+STEP=$1
+
+current=$( cat /sys/class/backlight/intel_backlight/actual_brightness )
+max=$( cat /sys/class/backlight/intel_backlight/max_brightness )
+min=100
+
+let new=$current+$STEP
+if [ "$new" -gt "$max" ] ; then new=$max ; fi
+if [ "$new" -lt "$min" ] ; then new=$min ; fi
+
+echo $new > /sys/class/backlight/intel_backlight/brightness
+

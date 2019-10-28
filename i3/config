@@ -25,12 +25,7 @@ client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
 client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
 client.background       #FFFFFF
 
-# I3 blocks
-#bar {
-#  status_command i3blocks
-#}
-
-# Compton
+# Compton - not working (25/10/19) have to start it manually
 # exec --no-startup-id compton -cCGb --backend glx --vsync opengl
 
 # Polybar
@@ -42,13 +37,6 @@ exec_always --no-startup-id feh --bg-fill /home/jforest/Pictures/by_crossing_256
 #font 
 font Iosevka 12
 
-# use these keys for focus, movement, and resize directions when reaching for
-# the arrows is not convenient
-# set $up i
-# set $down k
-# set $left j
-# set $right l
-
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -58,15 +46,11 @@ bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
-# bindsym $mod+d exec dmenu_run
+# Rofi shortcuts
+bindsym $mod+d exec --no-startup-id "rofi -show run"
+bindsym $mod+Tab exec --no-startup-id "rofi -show window"
 
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-
-# change focus
+# move focus
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
 bindsym $mod+$up focus up
@@ -167,8 +151,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $(pactl 
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $(pactl list short sinks | head -n1 | cut -f1) toggle
 
 # Sreen brightness controls
-# bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-# bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec brightness-adjust 150
+bindsym XF86MonBrightnessDown exec brightness-adjust -150
 
 
 # resize window (you can also use the mouse for that)
