@@ -2,10 +2,10 @@
 
 ### Options ###
 op1="Xrandr"
-op2="3 Screens"
-op3="HDMI"
+op2="Home Screens"
+op3="Picom"
 op4="Flameshot"
-op5="Vpn up"
+op5="Wallpaper"
 op6="Polybar"
 
 # Variable passed to rofi
@@ -17,16 +17,16 @@ case $chosen in
         xrandr --auto
 	;;
     $op2)
-        3screens
+        2screens_home.sh
         ;;
     $op3)
-        hdmi
+        launch_picom.sh
         ;;
     $op4)
 	flameshot gui
 	;;
     $op5)
-	vpn-up
+	feh --randomize --bg-fill /home/jforest/Pictures/SimonStalenhag/*
 	;;
     $op6)
 	launch_polybar.sh

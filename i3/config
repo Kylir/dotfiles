@@ -18,11 +18,11 @@ gaps inner 6
 gaps outer 0
 
 # Borders
-default_border pixel 3
+default_border pixel 4
 
 # Colors
 # class                 border  bground text    indicator child_border
-client.focused          #FF1058 #003DA5 #FFFFFF #2D99ED   #FF1058
+client.focused          #FF1058 #FF1058 #FFFFFF #2D99ED   #FF1058
 client.focused_inactive #333333 #5F676A #FFFFFF #484E50   #5F676A
 client.unfocused        #333333 #222222 #888888 #292D2E   #222222
 client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
@@ -39,7 +39,7 @@ exec_always --no-startup-id launch_polybar.sh
 exec_always launch_picom.sh 
 
 #font 
-font Iosevka 12
+font pango:Iosevka Nerd Font Regular 14
 
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -137,6 +137,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 # move workspace to different monitor
 bindsym $mod+m move workspace to output right
+bindsym $mod+n move workspace to output up
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -194,3 +195,5 @@ bindsym $mod+p exec firefox
 # Open a new VS Code windows
 bindsym $mod+o exec code
 
+# Microsoft Teams Notifications should be floating
+for_window [title="Microsoft Teams Notification"] floating enable
