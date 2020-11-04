@@ -1,6 +1,6 @@
 #!/bin/bash
 
-home_screen_layout.sh
+home_screen_dock_layout.sh
 
 launch_polybar.sh
 

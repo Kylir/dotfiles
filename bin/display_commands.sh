@@ -26,7 +26,7 @@ case $chosen in
 	flameshot gui
 	;;
     $op5)
-	feh --randomize --bg-fill /home/jforest/Pictures/SimonStalenhag/*
+	feh --randomize --bg-fill /home/jforest/Pictures/wallpaper/*
 	;;
     $op6)
 	launch_polybar.sh

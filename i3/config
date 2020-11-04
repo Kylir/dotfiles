@@ -14,11 +14,11 @@ set $mod Mod1
 set $winMod Mod4
 
 #General gaps values
-gaps inner 6
+gaps inner 14
 gaps outer 0
 
 # Borders
-default_border pixel 4
+default_border pixel 6
 
 # Colors
 # class                 border  bground text    indicator child_border
@@ -139,6 +139,15 @@ bindsym $mod+Shift+0 move container to workspace 10
 bindsym $mod+m move workspace to output right
 bindsym $mod+n move workspace to output up
 
+# switch between the current and the previously focused one
+bindsym $mod+b workspace back_and_forth
+bindsym $mod+Shift+b move container to workspace back_and_forth
+
+# Cycle to worspaces
+bindsym $mod+Next workspace next
+bindsym $mod+Prior workspace prev
+
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -148,6 +157,8 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # Lock the screen with Win+L
 bindsym $winMod+l exec "i3lock -t -i /home/jforest/Pictures/SimonStalenhag/astronomen_1920.png"
+# Lock and suspend with Win+Shift+L
+bindsym $winMod+Shift+l exec "i3lock -t -i /home/jforest/Pictures/SimonStalenhag/astronomen_1920.png && systemctl suspend"
 
 # Multimedia Keys - Sound and Backlight
 
@@ -155,6 +166,8 @@ bindsym $winMod+l exec "i3lock -t -i /home/jforest/Pictures/SimonStalenhag/astro
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $(pactl list short sinks | head -n1 | cut -f1) +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $(pactl list short sinks | head -n1 | cut -f1) -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $(pactl list short sinks | head -n1 | cut -f1) toggle
+bindsym XF86AudioMicMute exec --no-startup-id amixer -D pulse sset Capture toggle
+
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec brightness-adjust 10000

@@ -72,8 +72,8 @@ cursor-scroll = ns-resize
 ; MODULES GO HERE
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 modules-left = i3
-;modules-center = 
-modules-right = focus pulseaudio memory cpu wlan eth battery updates date sleep
+modules-center = playerctl
+modules-right = pulseaudio memory cpu battery docker updates wlan eth date
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; i3
@@ -264,10 +264,10 @@ type = internal/date
 interval = 5
 
 date =
-date-alt = " %Y-%m-%d"
+date-alt = " %a %d/%m/%y"
 
 time = %H:%M
-time-alt = %H:%M:%S
+time-alt = %H:%M
 
 ;format-prefix = 
 ;format-prefix-foreground = ${colors.foreground-alt}
@@ -530,7 +530,24 @@ type = custom/script
 exec = if ( nmcli -t c show --active | grep vpn > /dev/null ) ; then echo "聯 vpn" ; else echo "輦 vpn" ; fi
 click-left = if ( nmcli -t c show --active | grep vpn > /dev/null ) ; then vpn-down ; else vpn-up ; fi
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; playerctl
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/playerctl]
+type = custom/script
+exec = polybar_playerctl.sh 
+click-left = playerctl -p spotify play-pause
+click-right = playerctl -p spotify next
+click-middle = playerctl -p spotify previous
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; docker running containers
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/docker]
+type = custom/script
+exec = echo " $(docker ps -q | wc -l)"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
 [settings]
 screenchange-reload = true
 ;compositing-background = xor
@@ -539,6 +556,7 @@ screenchange-reload = true
 ;compositing-border = over
 ;pseudo-transparency = false
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
 [global/wm]
 margin-top = 5
 margin-bottom = 5
